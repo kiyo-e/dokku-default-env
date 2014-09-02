@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 APP="$1"; 
-IMAGE="/home/dokku/$APP"
 SOURCE_ENV_PATH="$HOME/ENV"
 
 if [ -f "$SOURCE_ENV_PATH" ] && [ ! -f "$DOKKU_ROOT/$APP/ENV" ]; then
