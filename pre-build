@@ -3,10 +3,7 @@ set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 APP="$1"; IMAGE="dokku/$APP"
 SOURCE_ENV_PATH="$HOME/ENV"
 
-if [[ -f "$SOURCE_ENV_PATH" ]]; then
+if [ -f "$SOURCE_ENV_PATH" ] && [ ! -f "$APP/ENV"  ] ; then
   echo "-----> Installing ENV in build environment ..."
-  cat  "$SOURCE_ENV_PATH" | while read line
-  do
-    dokku config:set $APP $line
-  done
+  dokku config:set  "$SOURCE_ENV_PATH" 
 fi
