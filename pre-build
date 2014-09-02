@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
-APP="$1"; IMAGE="dokku/$APP"
+APP="$1"; 
+IMAGE="/home/dokku/$APP"
 SOURCE_ENV_PATH="$HOME/ENV"
 
-if [ -f "$SOURCE_ENV_PATH" ] && [ ! -f "$IMAGE/ENV"  ] ; then
+if [ -f "$SOURCE_ENV_PATH" ] && [ ! -f "$IMAGE/ENV"  ]; then
   echo "-----> Installing ENV in build environment ..."
   ENV=`cat $SOURCE_ENV_PATH`
   dokku config:set $APP $ENV:q
-   
 fi
