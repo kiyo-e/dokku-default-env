@@ -5,5 +5,6 @@ SOURCE_ENV_PATH="$HOME/ENV"
 
 if [ -f "$SOURCE_ENV_PATH" ] && [ ! -f "$APP/ENV"  ] ; then
   echo "-----> Installing ENV in build environment ..."
-  dokku config:set  "$SOURCE_ENV_PATH" 
+  ENV=`cat $SOURCE_ENV_PATH`
+  dokku config:set $APP $ENV 
 fi
